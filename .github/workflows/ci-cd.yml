@@ -31,12 +31,12 @@ jobs:
     - name: Run Backend Tests
       run: |
         cd back
-        ./mvnw clean test
+        mvn clean test
     
     - name: Generate Jacoco Report
       run: |
         cd back
-        ./mvnw jacoco:report
+        mvn jacoco:report
     
     - name: Upload Backend Coverage to Codecov
       uses: codecov/codecov-action@v3
@@ -124,7 +124,7 @@ jobs:
     - name: Run Backend Tests for SonarCloud
       run: |
         cd back
-        ./mvnw clean test jacoco:report
+        mvn clean test jacoco:report
     
     - name: SonarCloud Scan
       env:
@@ -132,7 +132,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: |
         cd back
-        ./mvnw sonar:sonar \
+        mvn sonar:sonar \
           -Dsonar.projectKey=bobapp \
           -Dsonar.organization=your-org \
           -Dsonar.host.url=https://sonarcloud.io \
