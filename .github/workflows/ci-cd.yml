@@ -98,6 +98,12 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     
+    - name: Set up JDK 17 for SonarCloud
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -129,15 +135,18 @@ jobs:
         cd front
         npm run test -- --watch=false --browsers=ChromeHeadless --code-coverage
     
-    - name: Run Backend Tests for SonarCloud
+    - name: Run Backend Tests for SonarCloud (Java 11)
+      env:
+        JAVA_HOME: ${{ env.JAVA_HOME_11_X64 }}
       run: |
         cd back
         mvn clean test jacoco:report
     
-    - name: SonarCloud Scan
+    - name: SonarCloud Scan (Java 17)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        JAVA_HOME: ${{ env.JAVA_HOME_17_X64 }}
       run: |
         cd back
         mvn sonar:sonar \
