@@ -79,7 +79,7 @@ jobs:
       uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        directory: ./front/coverage
+        file: ./front/coverage/lcov.info
         flags: frontend
 
   sonarcloud:
