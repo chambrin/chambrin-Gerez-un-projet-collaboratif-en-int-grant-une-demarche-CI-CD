@@ -41,6 +41,7 @@ jobs:
     - name: Upload Backend Coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
+        token: ${{ secrets.CODECOV_TOKEN }}
         file: ./back/target/site/jacoco/jacoco.xml
         flags: backend
 
@@ -68,10 +69,17 @@ jobs:
         cd front
         npm run test -- --watch=false --browsers=ChromeHeadless --code-coverage
     
+    - name: List Coverage Files (Debug)
+      run: |
+        echo "=== Frontend Coverage Files ==="
+        find front/coverage -type f -name "*.info" || echo "No .info files found"
+        ls -la front/coverage/ || echo "Coverage directory not found"
+    
     - name: Upload Frontend Coverage to Codecov
       uses: codecov/codecov-action@v3
       with:
-        file: ./front/coverage/lcov.info
+        token: ${{ secrets.CODECOV_TOKEN }}
+        directory: ./front/coverage
         flags: frontend
 
   sonarcloud:
