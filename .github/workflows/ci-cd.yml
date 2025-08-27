@@ -15,10 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Set up JDK 17
+    - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
-        java-version: '17'
+        java-version: '11'
         distribution: 'temurin'
     
     - name: Cache Maven dependencies
@@ -92,10 +92,10 @@ jobs:
       with:
         fetch-depth: 0
     
-    - name: Set up JDK 17
+    - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
-        java-version: '17'
+        java-version: '11'
         distribution: 'temurin'
     
     - name: Set up Node.js
@@ -142,7 +142,7 @@ jobs:
         cd back
         mvn sonar:sonar \
           -Dsonar.projectKey=chambrin_chambrin-Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD \
-          -Dsonar.organization=chambrin \
+          -Dsonar.organization=chambrin-1 \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.sources=src/main \
           -Dsonar.tests=src/test \
