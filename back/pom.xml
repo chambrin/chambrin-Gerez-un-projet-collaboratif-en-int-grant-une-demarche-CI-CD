@@ -15,8 +15,8 @@
 	<description>L'application de joke par excellence !</description>
 	<properties>
 		<java.version>11</java.version>
-		<sonar.projectKey>bobapp</sonar.projectKey>
-		<sonar.organization>your-org</sonar.organization>
+		<sonar.projectKey>chambrin_chambrin-Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD</sonar.projectKey>
+		<sonar.organization>chambrin</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
